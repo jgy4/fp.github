@@ -1,1 +1,1 @@
-Sitemap: https://jgy4.github.io/fp.github/sitemap.xml
+Sitemap: https://jasmine.g.young.github.io/blog/sitemap.xml

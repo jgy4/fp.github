@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Math Is Fun - Solving Problems From The Euler Project | Jasmine G. Young - Data Scientist</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Math Is Fun - Solving Problems From The Euler Project" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog contains various data science projects in Jasmine’s portfolio." />
+<meta property="og:description" content="This blog contains various data science projects in Jasmine’s portfolio." />
+<link rel="canonical" href="https://jgy4.github.io/fp.github/2021/09/01/Math-Is-Fun.html" />
+<meta property="og:url" content="https://jgy4.github.io/fp.github/2021/09/01/Math-Is-Fun.html" />
+<meta property="og:site_name" content="Jasmine G. Young - Data Scientist" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-09-01T00:00:00-05:00","url":"https://jgy4.github.io/fp.github/2021/09/01/Math-Is-Fun.html","@type":"BlogPosting","headline":"Math Is Fun - Solving Problems From The Euler Project","dateModified":"2021-09-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://jgy4.github.io/fp.github/2021/09/01/Math-Is-Fun.html"},"description":"This blog contains various data science projects in Jasmine’s portfolio.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fp.github/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://jgy4.github.io/fp.github/feed.xml" title="Jasmine G. Young - Data Scientist" /><link rel="shortcut icon" type="image/x-icon" href="/fp.github/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fp.github/">Jasmine G. Young - Data Scientist</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fp.github/about/">About Me</a><a class="page-link" href="/fp.github/search/">Search</a><a class="page-link" href="/fp.github/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Math Is Fun - Solving Problems From The Euler Project</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-01T00:00:00-05:00" itemprop="datePublished">
+        Sep 1, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/jgy4/fp.github/tree/master/_notebooks/2021-09-01-Math-Is-Fun.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/fp.github/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/jgy4/fp.github/master?filepath=_notebooks%2F2021-09-01-Math-Is-Fun.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fp.github/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/jgy4/fp.github/blob/master/_notebooks/2021-09-01-Math-Is-Fun.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fp.github/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-01-Math-Is-Fun.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the blog below I will outline my solutions to three problems from The Euler project. The first, being the easiest, has been solved by less than 500,000 people. The second has been solved by less than 100,000 people. The third has been solved by less than 25,000 people. The problems are numbered as they appear on The Euler Project site <a href="https://projecteuler.net/archives">https://projecteuler.net/archives</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-6---Sum-Square-Difference">Problem 6 - Sum Square Difference<a class="anchor-link" href="#Problem-6---Sum-Square-Difference"> </a></h2><h3 id="Solved-By-496,296">Solved By 496,296<a class="anchor-link" href="#Solved-By-496,296"> </a></h3><p><a href="https://projecteuler.net/problem=6">https://projecteuler.net/problem=6</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are asked to find the difference between the "sum of the squares" of the first one hundred natural numbers and the "square of the sum" of the first one hundred natural numbers.</p>
+<p>For example, the "sum of the squares" of the first ten natural numbers is: $$1^2 + 2^2 + ... + 10^2 = 385$$</p>
+<p>The "square of the sum" of the first 10 natural numbers is: $$(1+2+...+10)^2 = 55^2 = 3025$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The function I used to obtain my solution is below. I forst compute the sum of squares. I begin by looping through the specified amount of natural numbers, in this case 100, and totaling the square of each number. Then, I compute the square of the sum by looping through the 100 natural numbers. I add them all together and square the total. Lastly, the function returns the difference by subtracting the two. Our answer is 25,164,150.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_square_diff</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Compute the sum of the squares</span>
+
+<span class="sd">Begin with sum_s equaling zero, and add each natural number squared.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">sum_s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">sum_s</span> <span class="o">+=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Compute the square of the sum</span>
+
+<span class="sd">Begin with sum_s equaling zero, and add each natural number. Square the sum at the end.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">s_sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s_sum</span> <span class="o">+=</span> <span class="n">j</span>
+    <span class="n">s_sum</span> <span class="o">=</span> <span class="n">s_sum</span><span class="o">**</span><span class="mi">2</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Return the difference by subtracting</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">s_sum</span> <span class="o">-</span> <span class="n">sum_s</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-1-0fcaf406158a&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">6</span>
+<span class="ansi-red-fg">    &#34;&#34;&#34;</span>
+       
+^
+<span class="ansi-red-fg">IndentationError</span><span class="ansi-red-fg">:</span> expected an indented block
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Our answer for the first 100 natural numbers is shown below.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">sum_square_diff</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-27---Quadratic-Primes">Problem 27 - Quadratic Primes<a class="anchor-link" href="#Problem-27---Quadratic-Primes"> </a></h2><h3 id="Solved-by-88,173">Solved by 88,173<a class="anchor-link" href="#Solved-by-88,173"> </a></h3><p><a href="https://projecteuler.net/problem=27">https://projecteuler.net/problem=27</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Considering quadratics of the form:
+
+$$n^2+an+b, |a|&lt;1000, |b|\leq1000$$
+
+We are asked to find the product of the coefficients, $a$ and $b$, for the quadratic expression that produces the maximum number of primes for consecutive values of $n$, starting with $n=0$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, there is a formula:
+
+$$n^2 - 79n +1601$$
+
+Which produces 80 primes for the consecutive values $0\leq n \leq 79$. The product of the coefficients, -79 and 1601, is -126,479.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>My code solution is shown below. I begin by creating a helper function that checks if a number is a prime. The main function, called quad_primes, loops through all possible values of a and b. For each possible value of a and b, the function checks if the result is a prime number. If the result is a prime number, then a while loop continues to increment n until the result is no longer prime. The function records the max count of prime numbers and the a and b values associated with that max count. The coefficients with the maximum number of primes for consecutive values of n are $a=-61$ and $b=971$. The product of these two coefficients is -59,231.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Check if a number is prime.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">check_prime</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prime numbers must be &gt; 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            If number is divisible by anything, it&#39;s not prime.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quad_primes</span><span class="p">(</span><span class="n">a_max</span><span class="p">,</span><span class="n">b_max</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Begin with a, b, and count values at zero.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prime_num</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">best_a</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">best_b</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">max_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loop through all possible values of a and b.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">999</span><span class="p">,</span><span class="n">a_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span><span class="n">b_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">prime_num</span> <span class="o">=</span> <span class="n">b</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            For the set (a,b) - track the count of consecutive primes.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">check_prime</span><span class="p">(</span><span class="n">prime_num</span><span class="p">)):</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">prime_num</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Check if count is higher than all other counts, and save values.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">max_count</span><span class="p">):</span>
+                <span class="n">best_a</span> <span class="o">=</span> <span class="n">a</span>
+                <span class="n">best_b</span> <span class="o">=</span> <span class="n">b</span>
+                <span class="n">max_count</span> <span class="o">=</span> <span class="n">count</span>
+    <span class="k">return</span><span class="p">([</span><span class="n">max_count</span><span class="p">,</span><span class="n">best_a</span><span class="p">,</span><span class="n">best_b</span><span class="p">,</span><span class="n">best_a</span> <span class="o">*</span> <span class="n">best_b</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="n">quad_primes</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The max count of prime numbers is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of a is </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of b is </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The product of a and b is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+</p>
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The max count of prime numbers is 71
+The value of a is -61.
+The value of b is 971.
+The product of a and b is -59231
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-85---Counting-Rectangles">Problem 85 - Counting Rectangles<a class="anchor-link" href="#Problem-85---Counting-Rectangles"> </a></h2><h3 id="Solved-by-24,609">Solved by 24,609<a class="anchor-link" href="#Solved-by-24,609"> </a></h3><p><a href="https://projecteuler.net/problem=85">https://projecteuler.net/problem=85</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although there exists no rectangular grid that contains exactly two million rectangles, find the area of the grid with the nearest solution.</p>
+<p>For example, a 3x2 grid contains 18 rectangles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The brute force solution is pretty easy to derive.  If the grid is X long and Y high, we want to find rectangles with sides which are 1≤x≤X and 1≤y≤Y.</p>
+<p>In case are looking for rectangles of size MxN there will be (X-M+1)*(Y-N+1)  possible ways to place that rectangles.</p>
+<p>We begin with a helper function called num_rect that counts how many rectangles are contained in an (X,Y) grid. This helper function loops through all possible rectangle shapes. For each rectangle of size HxW, the grid contains $(X-h+1)*(Y-W+1)$ of those rectangles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The main function, called count_rect, takes the goal number of rectangles as input. Then the function loops through possible dimensions for a grid. For each grid, the total number of rectangles is calculated. We save the grid that's closest to our goal number of rectangles. The closest we could get to 2,000,000 rectangles is 1,999,998 with a 36x77 grid.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Calculate the total number of rectangles in an (X,Y) grid.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">num_rect</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+    <span class="n">num_rect</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Y</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            We add to the total with each size of rectangle (h,w).</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">num_rect</span> <span class="o">+=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num_rect</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">count_rect</span><span class="p">(</span><span class="n">goal</span><span class="p">):</span>
+    <span class="n">best_h</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">best_w</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">best_diff</span> <span class="o">=</span> <span class="n">goal</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loop through possible grid values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">200</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            If grid is closest to goal, save values.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">goal</span> <span class="o">-</span> <span class="n">num_rect</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">best_diff</span><span class="p">):</span>
+                <span class="n">best_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">goal</span> <span class="o">-</span> <span class="n">num_rect</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+                <span class="n">best_h</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="n">best_w</span> <span class="o">=</span> <span class="n">j</span>
+    <span class="k">return</span><span class="p">[</span><span class="n">best_h</span><span class="p">,</span><span class="n">best_w</span><span class="p">,</span><span class="n">num_rect</span><span class="p">(</span><span class="n">best_h</span><span class="p">,</span><span class="n">best_w</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">count_rect</span><span class="p">(</span><span class="mi">2000000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The closest we could get to 2,000,000 rectangles is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The size of the grid with </span><span class="si">{}</span><span class="s1"> rectangles is </span><span class="si">{}</span><span class="s1">x</span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+</p>
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The closest we could get to 2,000,000 rectangles is 1999998
+The size of the grid with 1999998 rectangles is 36x77.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/fp.github/2021/09/01/Math-Is-Fun.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fp.github/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fp.github/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fp.github/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>This blog contains various data science projects in Jasmine&#39;s portfolio.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/https%3A%2F%2Fgithub.com%2Fjgy4" title="https://github.com/jgy4"><svg class="svg-icon grey"><use xlink:href="/fp.github/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
